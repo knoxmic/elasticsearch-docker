@@ -1,0 +1,21 @@
+version: '3.5'
+
+services:
+  db1_2_4_6:
+    image: knoxmic/elasticsearch:2.4.6
+    environment:
+      - "cluster.name=dev_2_4_6_elasticsearch_cluster"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 8200:9200
+      - 8300:9300
+    volumes:
+      - esdata1_2_4_6:/usr/share/elasticsearch/data
+    restart: always
+
+volumes:
+  esdata1_2_4_6:
+    driver: local
